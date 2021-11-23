@@ -1,6 +1,7 @@
 import * as express from "express";
 import { QueryTypes, Sequelize } from 'sequelize';
 import {pingController} from "./controllers/ping";
+import cors = require("cors");
 
 //declare database credentials
 const sequelize = new Sequelize('birdietest', 'test-read', 'xnxPp6QfZbCYkY8', {
@@ -19,6 +20,8 @@ const sequelize = new Sequelize('birdietest', 'test-read', 'xnxPp6QfZbCYkY8', {
 })();
 
 const app = express();
+
+app.use(cors());
 
 app.get("/test", async(_, res) => {
     const data = await sequelize.query("SELECT id FROM birdietest.events WHERE event_type = 'task_completed' AND  caregiver_id = '5c9090ab-7d5e-4a72-8bf7-197190ad4c98' AND task_instance_id = 'dHxmMjU2YmFlYS1jODEyLTRjZWMtOTUxNC0wYzc5YjNjZmQwMzN8MjAxOS0wNS0xMlQwNzowMDowMC4wMDBafE1PUk5JTkc=' ", { type: QueryTypes.SELECT });
