@@ -1,20 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Axios from "axios";
 
+
+
 function App() {
 
+  const [dataList, setDataList] = useState([]);
 
   useEffect(() => {
-    
     Axios.get("http://localhost:8000/test").then((response) => {
-      console.log("Data Fetched !", response)
-    })
+      setDataList(response.data);
+    });
   },[]);
 
   return (
     <div className="App">
-      Hello
+      <h1>Hello</h1>
+
+      { dataList.map((val: any) => {
+          return <h1>{val.id}</h1>
+        })
+      }
+
     </div>
   );
 }
