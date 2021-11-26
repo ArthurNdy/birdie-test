@@ -2,6 +2,13 @@ import React, { useEffect, useState } from "react";
 import "../css/TableComponent.css";
 import Axios from "axios";
 
+
+function CleanTime(date: string){
+    return(
+        new Date(date.substring(0, date.length - 1).split("+")[0]).toTimeString().split(" ")[0]
+    );
+}
+
 function TableComponent() {
   const [dailyList, setDailyList] = useState([]);
 
@@ -24,10 +31,11 @@ function TableComponent() {
         <tbody>
         {dailyList.map((val: any) => (
             <tr>
+              <td>{CleanTime(val.timestamp)}</td>
               <td>{val.timestamp}</td>
               <td>{val.event_type.replace(/_/g," ")}</td>
             </tr>
-            ))};
+            ))}
         </tbody>
         
       </table>
