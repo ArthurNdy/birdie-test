@@ -1,0 +1,13 @@
+.tableContainer{
+    margin: 10vh;
+  }
+  
+  .customTable{
+    color: black;
+    text-align: center;
+  }
+  
+  .customHeader{
+    color:whitesmoke;
+    background-color: #6c60c5;
+  }
