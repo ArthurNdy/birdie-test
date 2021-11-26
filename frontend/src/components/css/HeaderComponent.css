@@ -1,0 +1,16 @@
+.navbar {
+    display: flex;
+    background-color: #6c60c5;
+    padding:0px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#logo {
+    padding:15px;
+    margin-left: 40px;
+}
+
+.btn {
+    padding-inline: 3%;
+    margin-right: 10vh;
+}

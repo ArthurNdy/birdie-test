@@ -1,13 +1,26 @@
 .tableContainer{
-    margin: 10vh;
-  }
-  
-  .customTable{
-    color: black;
-    text-align: center;
-  }
-  
-  .customHeader{
-    color:whitesmoke;
-    background-color: #6c60c5;
-  }
+    margin-inline: 5vw;
+    height: 65vh;
+    width: 100vh;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+.customTable{
+  color: black;
+  text-align: center;
+  font-family: Circular-Std,sans-serif;
+}
+
+.customHeader{
+  color: #fff;
+  background-color: #6c60c5;
+  border: none;
+}
+
+.btn {
+    margin-right:5vh;
+}

@@ -1,0 +1,7 @@
+.AppContainer {
+  padding-top: 10vh;
+}
+
+.AppContent {
+  display: flex;
+}

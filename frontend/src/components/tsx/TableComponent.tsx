@@ -12,20 +12,20 @@ function TableComponent() {
   }, []);
 
   return (
-    <div className="tableContainer">
-      <table className="table customTable">
-        <tbody className="tableHeader customHeader">
+    <div className="tableContainer table-wrapper-scroll-y">
+      <table className="table customTable ">
+        <thead className="tableHeader customHeader ">
           <tr>
             <th scope="col">Time</th>
             <th scope="col">Event</th>
           </tr>
-        </tbody>
+        </thead>
         
         <tbody>
         {dailyList.map((val: any) => (
             <tr>
               <td>{val.timestamp}</td>
-              <td>{val.event_type}</td>
+              <td>{val.event_type.replace(/_/g," ")}</td>
             </tr>
             ))};
         </tbody>
