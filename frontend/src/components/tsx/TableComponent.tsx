@@ -41,7 +41,8 @@ function CleanDetails(payload_as_text: string) {
     [" Type: ", payload.type],
     [" Rule: ", payload.rrule],
     [" Dose: ", payload.dose_size],
-    [" Medication failure reason: ", payload.medication_failure_reason]
+    [" Medication failure reason: ", payload.medication_failure_reason],
+    [" Mood: ", payload.mood]
   ]
   
 

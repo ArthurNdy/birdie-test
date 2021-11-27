@@ -9,7 +9,7 @@ interface Props {
 function AlertCardComponent(props: Props) {
   return (
     <div className="card">
-      <h1 className="card-title">Alerts</h1>
+      <h1 className="card-title">Important Events</h1>
       <div className="card-body">
         <AlertsTableComponent setNbAlerts={props.setNbAlerts} />
       </div>
