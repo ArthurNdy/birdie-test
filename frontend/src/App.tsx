@@ -26,11 +26,13 @@ function App() {
         setShowAlerts={setShowAlerts}
       />
       <TitleComponent date={date} />
+      <div style={{ display: displayCard }}>
+        <AlertCardComponent setNbAlerts={setNbAlerts} />
+      </div>
       <div className="AppContent">
-        <div style={{ display: displayCard }}>
-          <AlertCardComponent setNbAlerts={setNbAlerts} />
+        <div className="AppMainTable">
+          <TableComponent setDate={setDate} />
         </div>
-        <TableComponent setDate={setDate} />
       </div>
     </div>
   );

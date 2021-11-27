@@ -6,10 +6,16 @@ interface Props {
   setDate: React.Dispatch<React.SetStateAction<string>>;
 }
 
-function CleanTime(date: string) {
-  return new Date(date.substring(0, date.length - 1).split("+")[0])
+function CleanTime(time: string) {
+  return new Date(time.substring(0, time.length - 1).split("+")[0])
     .toTimeString()
     .split(" ")[0];
+}
+
+function CleanEventType(event: string) {
+  return (
+    event.replace(/_/g, " ")
+  );
 }
 
 function CleanDate(date: string) {
@@ -21,23 +27,33 @@ function CleanDate(date: string) {
 function CleanDetails(payload_as_text: string) {
 
   const payload=JSON.parse(payload_as_text)
-  return (
-    [ 
-    " Medication type: ", payload.medication_type,
-    " Date for expected dose: ", payload.expected_dose_timestamp,
-    " Care giver id: ", payload.caregiver_id,
-    " Alert severity: ", payload.alert_severity,
-    " Concern severity: ", payload.severity,
-    " Note: ", payload.note,
-    " Fluid: ", payload.fluid,
-    " Observed: " ,payload.observed,
-    " Consumed volume (ml): ", payload.consumed_volume_ml,
-    " Pad Condition: ", payload.pad_condition,
-    " Type: ", payload.type,
-    " Rule: ", payload.rrule,
-    " Dose: ", payload.dose_size,
-    " Medication failure reason: ", payload.medication_failure_reason,
+  const payload_ls=[ 
+    [" Medication type: ", payload.medication_type],
+    [" Date for expected dose: ", payload.expected_dose_timestamp],
+    // [" Care giver id: ", payload.caregiver_id],
+    [" Alert severity: ", payload.alert_severity],
+    [" Concern severity: ", payload.severity],
+    [" Note: ", payload.note],
+    [" Fluid: ", payload.fluid],
+    [" Observed: " ,payload.observed],
+    [" Consumed volume (ml): ", payload.consumed_volume_ml],
+    [" Pad Condition: ", payload.pad_condition],
+    [" Type: ", payload.type],
+    [" Rule: ", payload.rrule],
+    [" Dose: ", payload.dose_size],
+    [" Medication failure reason: ", payload.medication_failure_reason]
   ]
+  
+
+  let valid_details="";
+  for (let i in payload_ls) {
+    if (payload_ls[i][1] !== undefined){
+      valid_details += payload_ls[i][0]+payload_ls[i][1]
+    }
+  }
+  
+  return (
+    valid_details
   );
 }
 
@@ -68,7 +84,7 @@ function TableComponent(props: Props) {
           {dailyList.map((data: any) => (
             <tr>
               <td>{CleanTime(data.timestamp)}</td>
-              <td>{data.event_type.replace(/_/g, " ")}</td>
+              <td>{CleanEventType(data.event_type).replace(/_/g, " ")}</td>
               <td>{CleanDetails(data.payload_as_text)}</td>
             </tr>
           ))}
