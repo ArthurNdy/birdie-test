@@ -11,10 +11,34 @@ function CleanTime(date: string) {
     .toTimeString()
     .split(" ")[0];
 }
+
 function CleanDate(date: string) {
   return new Date(
     date.substring(0, date.length - 1).split("+")[0]
   ).toDateString();
+}
+
+function CleanDetails(payload_as_text: string) {
+
+  const payload=JSON.parse(payload_as_text)
+  return (
+    [ 
+    " Medication type: ", payload.medication_type,
+    " Date for expected dose: ", payload.expected_dose_timestamp,
+    " Care giver id: ", payload.caregiver_id,
+    " Alert severity: ", payload.alert_severity,
+    " Concern severity: ", payload.severity,
+    " Note: ", payload.note,
+    " Fluid: ", payload.fluid,
+    " Observed: " ,payload.observed,
+    " Consumed volume (ml): ", payload.consumed_volume_ml,
+    " Pad Condition: ", payload.pad_condition,
+    " Type: ", payload.type,
+    " Rule: ", payload.rrule,
+    " Dose: ", payload.dose_size,
+    " Medication failure reason: ", payload.medication_failure_reason,
+  ]
+  );
 }
 
 function TableComponent(props: Props) {
@@ -45,7 +69,7 @@ function TableComponent(props: Props) {
             <tr>
               <td>{CleanTime(data.timestamp)}</td>
               <td>{data.event_type.replace(/_/g, " ")}</td>
-              <td>{data.payload}</td>
+              <td>{CleanDetails(data.payload_as_text)}</td>
             </tr>
           ))}
         </tbody>
