@@ -6,22 +6,22 @@ interface Props {
   setNbAlerts: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function CleanTime(date: string){
-    return(
-        new Date(date.substring(0, date.length - 1).split("+")[0]).toTimeString().split(" ")[0]
-    );
+function CleanTime(date: string) {
+  return new Date(date.substring(0, date.length - 1).split("+")[0])
+    .toTimeString()
+    .split(" ")[0];
 }
 
-function AlertsTableComponent(props:Props) {
+function AlertsTableComponent(props: Props) {
   const [alertsList, setAlertsList] = useState([]);
-  
+
   useEffect(() => {
     Axios.get("http://localhost:8000/alerts").then((response) => {
       console.log(response.data);
       setAlertsList(response.data);
-      props.setNbAlerts(response.data.length)
+      props.setNbAlerts(response.data.length);
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -34,16 +34,15 @@ function AlertsTableComponent(props:Props) {
             <th scope="col">Details</th>
           </tr>
         </thead>
-        
+
         <tbody>
-        {alertsList.map((data: any) => (
+          {alertsList.map((data: any) => (
             <tr>
               <td>{CleanTime(data.timestamp)}</td>
-              <td>{data.event_type.replace(/_/g," ")}</td>
+              <td>{data.event_type.replace(/_/g, " ")}</td>
             </tr>
-            ))}
+          ))}
         </tbody>
-        
       </table>
     </div>
   );

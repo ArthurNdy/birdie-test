@@ -1,22 +1,22 @@
-#tableContainer{
-    margin-left: 40vw;
-    margin-right: 5vw;
-    height: 65vh;
-    width: 100vh;
-    overflow: auto;
+#tableContainer {
+  margin-left: 40vw;
+  margin-right: 5vw;
+  height: 65vh;
+  width: 100vh;
+  overflow: auto;
 }
 
 .table-wrapper-scroll-y {
-    display: block;
+  display: block;
 }
 
-.customTable{
+.customTable {
   color: black;
   text-align: center;
-  font-family: Circular-Std,sans-serif;
+  font-family: Circular-Std, sans-serif;
 }
 
-.customHeader{
+.customHeader {
   color: #fff;
   background-color: #6c60c5;
   border: none;

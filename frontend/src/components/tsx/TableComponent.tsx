@@ -6,27 +6,27 @@ interface Props {
   setDate: React.Dispatch<React.SetStateAction<string>>;
 }
 
-function CleanTime(date: string){
-    return(
-        new Date(date.substring(0, date.length - 1).split("+")[0]).toTimeString().split(" ")[0]
-    );
+function CleanTime(date: string) {
+  return new Date(date.substring(0, date.length - 1).split("+")[0])
+    .toTimeString()
+    .split(" ")[0];
 }
-function CleanDate(date: string){
-  return(
-      new Date(date.substring(0, date.length - 1).split("+")[0]).toDateString()
-  );
+function CleanDate(date: string) {
+  return new Date(
+    date.substring(0, date.length - 1).split("+")[0]
+  ).toDateString();
 }
 
-function TableComponent(props:Props) {
+function TableComponent(props: Props) {
   const [dailyList, setDailyList] = useState([]);
 
   useEffect(() => {
     Axios.get("http://localhost:8000/daily").then((response) => {
       console.log(response.data);
       setDailyList(response.data);
-      props.setDate(CleanDate(response.data[0].timestamp))
+      props.setDate(CleanDate(response.data[0].timestamp));
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -39,17 +39,16 @@ function TableComponent(props:Props) {
             <th scope="col">Details</th>
           </tr>
         </thead>
-        
+
         <tbody>
-        {dailyList.map((data: any) => (
+          {dailyList.map((data: any) => (
             <tr>
               <td>{CleanTime(data.timestamp)}</td>
-              <td>{data.event_type.replace(/_/g," ")}</td>
+              <td>{data.event_type.replace(/_/g, " ")}</td>
               <td>{data.payload}</td>
             </tr>
-            ))}
+          ))}
         </tbody>
-        
       </table>
     </div>
   );
