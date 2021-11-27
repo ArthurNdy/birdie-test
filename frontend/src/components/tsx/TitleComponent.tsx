@@ -2,12 +2,16 @@ import React from "react";
 import "../css/TitleComponent.css";
 
 var patient_name = "Mr X";
-var date = "Date"
 
-function TitleComponent() {
+interface Props {
+  date: string;
+}
+
+
+function TitleComponent(props:Props) {
   return (
     <div className="Title">
-      <h1>Daily events of a {patient_name} on day {date}</h1>
+      <h1>Daily events of a {patient_name} on {props.date}</h1>
     </div>
   );
 }

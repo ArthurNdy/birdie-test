@@ -42,7 +42,13 @@ app.get("/timestamps", async(_, res) => {
 });
 
 app.get("/daily", async(_,res) => {
-  const data = await sequelize.query("SELECT id, timestamp, event_type FROM birdietest.events WHERE DATE_FORMAT(timestamp, '%d/%m/%Y') = '23/04/2019' AND care_recipient_id = 'ad3512a6-91b1-4d7d-a005-6f8764dd0111' ORDER BY TIMESTAMP(timestamp)")
+  const data = await sequelize.query("SELECT id, timestamp, event_type, alert_id, care_recipient_id, payload_as_text FROM birdietest.events WHERE DATE_FORMAT(timestamp, '%d/%m/%Y') = '25/04/2019' AND care_recipient_id = 'e3e2bff8-d318-4760-beea-841a75f00227' ORDER BY TIMESTAMP(timestamp)")
+  console.log('data', data[0]);
+  res.send(data[0]);
+});
+
+app.get("/alerts", async(_,res) => {
+  const data = await sequelize.query("SELECT id, timestamp, event_type, alert_id, care_recipient_id, payload_as_text FROM birdietest.events WHERE DATE_FORMAT(timestamp, '%d/%m/%Y') = '25/04/2019' AND care_recipient_id = 'e3e2bff8-d318-4760-beea-841a75f00227' AND alert_id IS NOT NULL ORDER BY TIMESTAMP(timestamp)")
   console.log('data', data[0]);
   res.send(data[0]);
 });

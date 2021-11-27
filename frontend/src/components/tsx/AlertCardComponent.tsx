@@ -1,15 +1,18 @@
 import React from "react";
 import "../css/AlertCardComponent.css";
+import AlertsTableComponent from "./AlertsTableComponent";
 
-function AlertCardComponent() {
+
+interface Props {
+  setNbAlerts: React.Dispatch<React.SetStateAction<number>>;
+}
+
+function AlertCardComponent(props:Props) {
   return (
     <div className="card">
+      <h1 className="card-title">Alerts</h1>
       <div className="card-body">
-        <h1 className="card-title">Alerts</h1>
-        <p className="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
+        <AlertsTableComponent setNbAlerts={props.setNbAlerts}/>
       </div>
     </div>
   );
