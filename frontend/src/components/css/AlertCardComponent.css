@@ -1,4 +1,9 @@
 .card{
-    margin-inline: 5vw;
-    width: 30vw;
-}
+    margin-inline: 10vw;
+    width: 80vw;
+    height: 70vh;
+    position: absolute;
+    border-radius: 50px;
+    border-color: #6c60c5;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;}

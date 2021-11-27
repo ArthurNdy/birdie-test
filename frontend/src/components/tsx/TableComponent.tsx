@@ -29,11 +29,10 @@ function TableComponent() {
         </thead>
         
         <tbody>
-        {dailyList.map((val: any) => (
+        {dailyList.map((data: any) => (
             <tr>
-              <td>{CleanTime(val.timestamp)}</td>
-              <td>{val.timestamp}</td>
-              <td>{val.event_type.replace(/_/g," ")}</td>
+              <td>{CleanTime(data.timestamp)}</td>
+              <td>{data.event_type.replace(/_/g," ")}</td>
             </tr>
             ))}
         </tbody>
