@@ -8,3 +8,8 @@
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 }
+
+.card-body{
+  align-content: center;
+  margin-inline: 10vw;
+}

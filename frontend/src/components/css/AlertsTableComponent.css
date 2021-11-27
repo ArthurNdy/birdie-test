@@ -1,6 +1,6 @@
 #alertTable {
-  height: 65vh;
-  width: 100vh;
+  height: 50vh;
+  max-width: 100%;
   overflow: auto;
 }
 
