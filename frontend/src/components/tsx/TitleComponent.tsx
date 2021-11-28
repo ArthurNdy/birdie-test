@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/TitleComponent.css";
 
+//can be replaced with the name corresponding to the "care_recipient" data
 var patient_name = "Mr X";
 
 interface Props {

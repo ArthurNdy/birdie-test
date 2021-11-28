@@ -6,6 +6,7 @@ interface Props {
   setNbAlerts: React.Dispatch<React.SetStateAction<number>>;
 }
 
+//Card is displayed when we click on the "important events" button
 function AlertCardComponent(props: Props) {
   return (
     <div className="card">

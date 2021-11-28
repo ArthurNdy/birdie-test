@@ -9,7 +9,9 @@ interface Props {
 }
 
 function HeaderComponent(props: Props) {
+  
   function HandleClick() {
+    //Handle the click on the "important events" button to display or not the alerts card
     props.setShowAlerts(!props.showAlerts);
   }
 

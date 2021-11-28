@@ -6,8 +6,11 @@ import "./App.css";
 import AlertCardComponent from "./components/tsx/AlertCardComponent";
 
 function App() {
+  //State to show the alerts card on button click
   const [showAlerts, setShowAlerts] = useState(false);
+  //State to show the date at the top of the main table
   const [date, setDate] = useState("");
+  //State to show the nb of alerts on the button
   const [nbAlerts, setNbAlerts] = useState(0);
 
   var displayCard: string;
